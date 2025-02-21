@@ -44,13 +44,38 @@ class UserController:
 
     def add_review_to_user(self, email, review):
         """Adiciona uma avaliação ao perfil do usuário."""
-        if email in self.users:
+        try:
+
+            if email not in self.users:
+                raise ValueError(f"Usuário com email '{email}' não encontrado.")            
+
+            if "avaliacoes" not in self.users[email]:
+                    self.users[email]["avaliacoes"] = []  # Garante que a lista de avaliações exista
+
             self.users[email]["avaliacoes"].append(review)
+
             self.save_users()
 
             # Atualiza o usuário logado
             if self.logged_in_user and self.logged_in_user.get("email") == email:
                 self.logged_in_user["avaliacoes"] = self.users[email]["avaliacoes"]
+
+        except ValueError as ve:
+            print(f"Erro de validação: {ve}")
+            # Aqui você pode optar por lançar novamente o erro ou retornar False para indicar falha
+            return False
+
+        except IOError as ioe:
+            print(f"Erro ao salvar os dados do usuário: {ioe}")
+            # Tratar erro de I/O (ex.: falha ao escrever no arquivo JSON)
+            return False
+
+        except Exception as e:
+            print(f"Erro inesperado ao adicionar avaliação ao usuário: {e}")
+            # Captura qualquer outro erro inesperado
+            return False
+
+        return True
 
     def get_user_reviews(self, email):
         return self.users.get(email, {}).get("avaliacoes", [])

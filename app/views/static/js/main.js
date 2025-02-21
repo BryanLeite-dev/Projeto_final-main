@@ -9,10 +9,10 @@ function addReviewToPage(review) {
     const reviewsContainer = document.getElementById("reviews-container");
 
     const reviewElement = document.createElement("div");
-    reviewElement.innerHTML = `
+    reviewElement.innerHTML = `        
         <p><strong>${review.usuario}:</strong> ${review.comentario}</p>
         <p>Nota: ${review.nota}</p>
     `;
 
-    reviewsContainer.appendChild(reviewElement);
+    reviewsContainer.appendChild(reviewElement);    
 }

@@ -89,6 +89,7 @@ def profile():
     user_reviews = user_controller.get_user_reviews(email)
 
     # Passa as avaliações como parte do contexto do template
+    print(f"Dados do usuário logado: {user_controller.logged_in_user}")
     return template('app/views/html/profile.html', user=user_controller.logged_in_user, reviews=user_reviews)
 
 # Detalhes do filme
@@ -98,11 +99,19 @@ def movie_details(movie_id):
         return redirect('/inicio')
 
     try:
+        try:
         # Busca os detalhes do filme usando a API do TMDB
-        movie = movie_controller.get_movie_details(movie_id)
+            movie = movie_controller.get_movie_details(movie_id)
+        except Exception as api_error:
+            print(f"Erro ao buscar detalhes do filme com ID {movie_id}: {api_error}")
+            return "Erro ao carregar os detalhes do filme. Por favor, tente novamente mais tarde."            
 
         # Obtém as avaliações do filme
-        reviews = review_controller.get_reviews_by_movie(movie_id)
+        try:
+            reviews = review_controller.get_reviews_by_movie(movie_id)
+        except Exception as review_error:
+            print(f"Erro ao obter avaliações do filme com ID {movie_id}: {review_error}")
+            reviews = []  # Define como lista vazia em caso de erro        
 
         if request.method == 'POST':
             comentario = request.forms.get('comentario')
@@ -118,15 +127,21 @@ def movie_details(movie_id):
                     return "Erro: A nota deve ser um número entre 1 e 10."
             except ValueError:
                 return "Erro: A nota deve ser um número válido."
-
+            
             # Adiciona a avaliação
-            review_controller.add_review(user_controller.logged_in_user['email'], movie_id, comentario, nota)
-            return redirect(f'/movie/{movie_id}')
-
+            try:
+                review_controller.add_review(user_controller.logged_in_user['email'], movie_id, comentario, nota)
+                return redirect(f'/movie/{movie_id}')
+            
+            except Exception as add_review_error:
+                print(f"Erro ao adicionar avaliação ao filme com ID {movie_id}: {add_review_error}")
+                return "Erro ao adicionar sua avaliação. Por favor, tente novamente mais tarde."
+                    
         return template('app/views/html/movie_details.html', movie=movie, reviews=reviews)
 
-    except Exception as e:
-        return template('app/views/html/home.html')
+    except Exception as general_error:
+        print(f"Erro inesperado na rota /movie/{movie_id}: {general_error}")
+        return "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde."
 
 # WebSocket
 @app.route('/websocket')
@@ -134,13 +149,18 @@ def handle_websocket():
     ws = request.environ.get('wsgi.websocket')
     if not ws:
         abort(400, "Expected WebSocket request.")
+            
+    websocket_controller.add_client(ws)
 
-    while True:
-        message = ws.receive()
-        if message is None:
-            break
-        ws.send(f"Echo: {message}")
-
+    try:
+        while True:
+            message = ws.receive()
+            if message is None:
+                break
+            ws.send(f"Echo: {message}")
+    finally:
+        websocket_controller.remove_client(ws)
+    
 if __name__ == '__main__':
     server = WSGIServer(("localhost", 8080), app, handler_class=WebSocketHandler)
     print("Servidor iniciado em http://localhost:8080/")
