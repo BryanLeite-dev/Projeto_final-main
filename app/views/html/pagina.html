@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página do Usuário</title>
+    <link rel="stylesheet" href="/static/css/styles.css"> <!-- Link para o CSS -->
+</head>
+<body>
+    <h1>Bem-vindo, {{usuario_atual.username}}!</h1>
+
+    <!-- Barra de busca -->
+    <form id="search-form" action="/buscar_filme" method="GET">
+        <input type="text" name="movie" placeholder="Digite o nome do filme..." required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Resultados da busca -->
+    <div id="search-results">
+        {% if filme %}
+            <h2>Resultado da Busca:</h2>
+            <div>
+                <h3>{{ filme.titulo }}</h3>
+                <p><strong>Ano de Lançamento:</strong> {{ filme.data_lancamento[:4] }}</p>
+                <p><strong>Gêneros:</strong> {{ filme.generos }}</p>
+                <p><strong>Sinopse:</strong> {{ filme.descricao }}</p>
+                <p><strong>Avaliação:</strong> {{ filme.nota }}/10</p>
+                {% if filme.capa %}
+                    <img src="https://image.tmdb.org/t/p/w500{{ filme.capa }}" alt="Poster do Filme">
+                {% else %}
+                    <p>Poster não disponível.</p>
+                {% endif %}
+            </div>
+        {% elif erro %}
+            <p style="color: red;">{{ erro }}</p>
+        {% else %}
+            <p>Nenhum filme buscado ainda.</p>
+        {% endif %}
+    </div>
+
+    <!-- Logout -->
+    <form action="/logout" method="POST">
+        <button type="submit">Sair</button>
+    </form>
+</body>
+</html>

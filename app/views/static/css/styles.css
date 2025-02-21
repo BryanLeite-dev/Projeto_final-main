@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+    color: #f1f5f9
+}
+
+body {
+    background-color: #020617;
+}
+
+/* Navbar */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    /* Garante que os elementos fiquem na mesma linha */
+    align-items: center;
+    /* Alinha verticalmente os itens */
+    padding: 4px 3%;
+    /* Espaçamento interno */
+    justify-content: space-between;
+    /* Espaço entre os elementos */
+    background-color: #0f172a;
+    /* Cor de fundo */
+    color: #fff;
+    /* Cor do texto */
+}
+
+.nav ul {
+    list-style: none;
+    /* Remove os marcadores da lista */
+    display: flex;
+    /* Garante que os itens da lista fiquem na mesma linha */
+    gap: 20px;
+    /* Espaço entre os itens */
+    margin: 0;
+    /* Remove margens padrão */
+    padding: 0;
+    /* Remove preenchimento padrão */
+}
+
+.nav ul li {
+    display: inline-block;
+    /* Garante que os itens da lista sejam exibidos em linha */
+}
+
+.nav ul li a {
+    text-decoration: none;
+    /* Remove sublinhado dos links */
+    color: #fff;
+    /* Cor dos links */
+    font-weight: bold;
+    /* Deixa o texto em negrito */
+    font-size: 16px;
+    /* Tamanho da fonte */
+    transition: color 0.3s ease;
+    /* Efeito suave ao passar o mouse */
+}
+
+.nav ul li a:hover {
+    color: #00bcd4;
+    /* Altera a cor ao passar o mouse */
+}
+
+/* Movie Cards */
+.movie-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    list-style: none;
+    width: 100%;
+}
+
+.movie-card {
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .movie-title {
+        font-size: 12px;
+        color: #f1f5f9;
+    }
+
+    .movie-date {
+        margin-top: 10px;
+        font-size: 12px;
+        color: #f1f5f9;
+    }
+
+    .hidden-content {
+        height: 0px;
+        color: #fff;
+        font-size: 12px;
+        margin-top: 8px;
+        opacity: 0;
+        transition: all .6s;
+
+
+
+    }
+}

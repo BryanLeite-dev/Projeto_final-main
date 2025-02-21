@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Detalhes do Filme</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/profile">Perfil</a></li>
+            <li><a href="/logout">Sair</a></li>
+        </ul>
+    </nav>
+
+    <h1>{{ movie['title'] }}</h1>
+    <p>Ano de Lançamento: {{ movie['release_date'] }}</p>
+    <p>Sinopse: {{ movie['overview'] }}</p>
+
+    <h2>Avaliações</h2>
+    <div>
+        % if reviews:
+        % for review in reviews:
+        <div>
+            <p><strong>{{ review['usuario'] }}:</strong> {{ review['comentario'] }}</p>
+            <p>Nota: {{ review['nota'] }}</p>
+        </div>
+        % end
+        % else:
+        <p>Nenhuma avaliação disponível.</p>
+        % end
+    </div>
+
+    <h3>Faça sua Avaliação</h3>
+    <form method="POST">
+        <textarea name="comentario" placeholder="Deixe seu comentário"></textarea>
+        <input type="number" name="nota" placeholder="Nota (1-10)" min="1" max="10" required>
+        <button type="submit">Enviar Avaliação</button>
+    </form>
+</body>
+<script src="/static/js/main.js"></script>
+
+</html>
