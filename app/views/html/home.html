@@ -2,29 +2,31 @@
 <html>
 
 <head>
-    <title>Letterboxd Clone</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>Rebobine</title>
+    <link rel="stylesheet" href="/static/css/styles_home.css">
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav>
+    <nav class="navbar">
+        <img src="/static/img/Rebobine.png" alt="Logo" class="logo">
         <ul>
             <li><a href="/home">Home</a></li>
             <li><a href="/profile">Perfil</a></li>
             <li><a href="/logout">Sair</a></li>
         </ul>
     </nav>
+
     <br>
     <!-- Conteúdo da Página -->
     <h1>Filmes Populares</h1>
     <div class="movie-list">
         % for movie in popular_movies:
         <div class="movie-card">
-
             <img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="{{ movie['title'] }}">
+                
             <a href="/movie/{{ movie['id'] }}">
-                <h2>{{ movie['title'] }}</h2>
+                <h3>{{ movie['title'] }}</h3>
             </a>
             <p>{{ movie['overview'] }}</p>
         </div>

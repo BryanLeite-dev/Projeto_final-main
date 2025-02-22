@@ -2,16 +2,23 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="/static/css/styles_inicio.css">
 </head>
 <body>
+    <header>
+        <img src="/static/img/Rebobine.png" alt="Logo" class="logo">
+    </header>
     <h1>Login</h1>
     <form action="/login" method="post">
-        Email: <input type="text" name="email"><br>
-        Senha: <input type="password" name="senha"><br>
-        <button type="submit">Entrar</button>
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email" required><br>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required><br>
+        
+        <p>
+            <a><button type="submit" id = "button">Entrar</button></a>
+            <a href="/">Voltar</a>
+        </p>
     </form>
-    <p>
-        <a href="/"><button>Voltar</button></a>
-    </p>
 </body>
 </html>

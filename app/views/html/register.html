@@ -2,17 +2,24 @@
 <html>
 <head>
     <title>Letterboxd - Registro</title>
+    <link rel="stylesheet" href="/static/css/styles_register.css">
 </head>
 <body>
+    <header>
+        <img src="/static/img/Rebobine.png" alt="Logo Rebobine" class="logo">
+    </header>
     <h1>Registro</h1>
     <form action="/register" method="post">
-        Nome: <input type="text" name="nome"><br>
-        Email: <input type="text" name="email"><br>
-        Senha: <input type="password" name="senha"><br>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required><br>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required><br>
         <button type="submit">Registrar</button>
     </form>
-    <p>
-        <a href="/"><button>Voltar</button></a>
-    </p>
+        <p>
+            <a href="/"><button>Voltar</button></a>
+        </p>
 </body>
 </html>

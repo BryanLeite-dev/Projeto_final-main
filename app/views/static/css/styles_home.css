@@ -1,0 +1,122 @@
+/* styles_home.css */
+
+/* Reset básico para remover margens e preenchimentos padrão */
+body, h1, h2, p, ul, li, a, div {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Estilo para o corpo da página */
+body {
+    background-color: #0a3d3d; /* Verde escuro */
+    color: #e0f7fa; /* Verde água mais claro para o texto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Estilo para a navbar */
+.navbar {
+    background-color: #1a535c; /* Verde médio escuro */
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para a logo na navbar */
+.navbar .logo {
+    width: 100px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+}
+
+/* Estilo para a lista de links na navbar */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+/* Estilo para os links na navbar */
+.navbar a {
+    text-decoration: none;
+    color: #80cbc4; /* Verde água mais claro */
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+/* Efeito hover para os links na navbar */
+.navbar a:hover {
+    color: #4db6ac; /* Verde água médio */
+}
+
+/* Estilo para o contêiner principal */
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Estilo para os títulos das seções */
+h1 {
+    font-size: 2rem;
+    color: #80cbc4; /* Verde água mais claro */
+    margin-bottom: 20px;
+}
+
+/* Estilo para a lista de filmes */
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* Estilo para cada card de filme */
+.movie-card {
+    background-color: #1a535c; /* Verde médio escuro */
+    border-radius: 10px;
+    overflow: hidden;
+    width: calc(33.333% - 20px); /* 3 cartões por linha */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+/* Efeito hover para os cartões de filme */
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo para a imagem do filme */
+.movie-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Estilo para o título do filme */
+.movie-card h2 {
+    font-size: 1.2rem;
+    color: #80cbc4; /* Verde água mais claro */
+    padding: 10px;
+    margin: 0;
+}
+
+/* Estilo para a descrição do filme */
+.movie-card p {
+    font-size: 0.9rem;
+    color: #e0f7fa; /* Verde água mais claro */
+    padding: 0 10px 10px;
+    margin: 0;
+}
+
+/* Estilo para o link do filme */
+.movie-card a {
+    text-decoration: none;
+    color: inherit;
+}

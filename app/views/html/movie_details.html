@@ -3,12 +3,13 @@
 
 <head>
     <title>Detalhes do Filme</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/styles_movies_details.css">
 </head>
 
 <body>
     <!-- Navbar -->
     <nav class="navbar">
+        <img src="/static/img/Rebobine.png" alt="Logo Rebobine" class="logo">
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/profile">Perfil</a></li>
@@ -16,30 +17,41 @@
         </ul>
     </nav>
 
-    <h1>{{ movie['title'] }}</h1>
-    <p>Ano de Lançamento: {{ movie['release_date'] }}</p>
-    <p>Sinopse: {{ movie['overview'] }}</p>
-
-    <h2>Avaliações</h2>
-    <div>
-        % if reviews:
-        % for review in reviews:
-        <div>
-            <p><strong>{{ review['usuario'] }}:</strong> {{ review['comentario'] }}</p>
-            <p>Nota: {{ review['nota'] }}</p>
-        </div>
-        % end
+    <!-- Conteúdo da Página -->
+    <div class="container">
+        <h1>{{ movie['title'] }}</h1>
+        <!-- Exibe a imagem do filme -->
+        % if movie['poster_path']:
+        <div class = "img"><img src="{{ movie['poster_path'] }}" alt="Capa do Filme" style="max-width: 300px;"></div>
         % else:
-        <p>Nenhuma avaliação disponível.</p>
+        <p>Imagem indisponível</p>
         % end
-    </div>
+        <p><strong>Ano de Lançamento:</strong> {{ movie['release_date'] }}</p>
+        <p><strong>Sinopse:</strong> {{ movie['overview'] }}</p>
 
-    <h3>Faça sua Avaliação</h3>
-    <form method="POST">
-        <textarea id="comentario" name="comentario" placeholder="Deixe seu comentário"></textarea>
-        <input type="number" id="nota" name="nota" placeholder="Nota (1-10)" min="1" max="10" required>
-        <button type="submit">Enviar Avaliação</button>
-    </form>
+        <!-- Avaliações -->
+        <h2>Avaliações</h2>
+        <div class="reviews-container">
+            % if reviews:
+            % for review in reviews:
+            <div class="review-card">
+                <p><strong>{{ review['usuario'] }}:</strong> {{ review['comentario'] }}</p>
+                <p><strong>Nota:</strong> {{ review['nota'] }}</p>
+            </div>
+            % end
+            % else:
+            <p>Nenhuma avaliação disponível.</p>
+            % end
+        </div>
+
+        <!-- Formulário de Avaliação -->
+        <h3>Faça sua Avaliação</h3>
+        <form method="POST" class="review-form">
+            <textarea id="comentario" name="comentario" placeholder="Deixe seu comentário" required></textarea>
+            <input type="number" id="nota" name="nota" placeholder="Nota (1-10)" min="1" max="10" required>
+            <button type="submit">Enviar Avaliação</button>
+        </form>
+    </div>
 </body>
 
 <script src="/static/js/main.js"></script>

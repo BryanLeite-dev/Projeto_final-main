@@ -1,0 +1,119 @@
+/* styles_profile.css */
+
+/* Reset básico para remover margens e preenchimentos padrão */
+body, h1, h2, p, ul, li, a, div {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Estilo para o corpo da página */
+body {
+    background-color: #0a3d3d; /* Verde escuro */
+    color: #e0f7fa; /* Verde água mais claro para o texto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Estilo para a navbar */
+.navbar {
+    background-color: #1a535c; /* Verde médio escuro */
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para a logo na navbar */
+.navbar .logo {
+    width: 100px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+}
+
+/* Estilo para a lista de links na navbar */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+/* Estilo para os links na navbar */
+.navbar a {
+    text-decoration: none;
+    color: #80cbc4; /* Verde água mais claro */
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+/* Efeito hover para os links na navbar */
+.navbar a:hover {
+    color: #4db6ac; /* Verde água médio */
+}
+
+/* Estilo para o contêiner do perfil */
+.profile-container {
+    background-color: #1a535c; /* Verde médio escuro */
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilo para o título do perfil */
+.profile-container h1 {
+    font-size: 2rem;
+    color: #80cbc4; /* Verde água mais claro */
+    margin-bottom: 10px;
+}
+
+/* Estilo para o texto do perfil */
+.profile-container p {
+    font-size: 1.2rem;
+    color: #e0f7fa; /* Verde água mais claro */
+}
+
+/* Estilo para o contêiner das avaliações */
+.reviews-container {
+    background-color: #1a535c; /* Verde médio escuro */
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Estilo para o título das avaliações */
+.reviews-container h2 {
+    font-size: 1.5rem;
+    color: #80cbc4; /* Verde água mais claro */
+    margin-bottom: 15px;
+}
+
+/* Estilo para cada card de avaliação */
+.review-card {
+    background-color: #0a3d3d; /* Verde escuro */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Estilo para o texto das avaliações */
+.review-card p {
+    font-size: 1rem;
+    color: #e0f7fa; /* Verde água mais claro */
+    margin-bottom: 5px;
+}
+
+/* Estilo para o texto de "nenhuma avaliação" */
+.reviews-container p {
+    font-size: 1rem;
+    color: #e0f7fa; /* Verde água mais claro */
+    text-align: center;
+}

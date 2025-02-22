@@ -1,0 +1,102 @@
+/* styles_login.css */
+
+/* Reset básico para remover margens e preenchimentos padrão */
+body, h1, form, label, input, button, p, a {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Estilo para o corpo da página */
+body {
+    background-color: #0a3d3d; /* Verde escuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    color: #e0f7fa; /* Verde água mais claro para o texto */
+}
+
+/* Estilo para o cabeçalho */
+header {
+    margin-bottom: 20px;
+}
+
+/* Estilo para a logo */
+.logo {
+    width: 150px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+}
+
+/* Estilo para o título */
+h1 {
+    font-size: 2rem;
+    color: #80cbc4; /* Verde água mais claro */
+    margin-bottom: 20px;
+}
+
+/* Estilo para o formulário */
+form {
+    background-color: #1a535c; /* Verde médio escuro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para os labels */
+label {
+    color: #80cbc4; /* Verde água mais claro */
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+/* Estilo para os inputs */
+form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #80cbc4; /* Verde água mais claro */
+    border-radius: 5px;
+    background-color: #0a3d3d; /* Verde escuro */
+    color: #e0f7fa; /* Verde água mais claro */
+    font-size: 1rem;
+}
+
+/* Estilo para o botão de submit */
+form button{
+    visibility: hidden;
+    background-color: #1a535c;
+}
+
+/* Efeito hover para o botão de submit */
+form button[type="submit"]:hover {
+    background-color: #4db6ac; /* Verde água médio */
+}
+
+/* Estilo para o botão "Voltar" */
+a button {
+    background-color: #1a535c;
+    border: 2px solid #80cbc4; /* Verde água mais claro */
+    color: #80cbc4; /* Verde água mais claro */
+    width: 100px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Efeito hover para o botão "Voltar" */
+a button:hover {
+    background-color: #80cbc4; /* Verde água mais claro */
+    color: #0a3d3d; /* Verde escuro */
+}
+
+/* Estilo para o parágrafo do botão "Voltar" */
+p {
+    margin-top: 20px;
+}

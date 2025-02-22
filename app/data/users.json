@@ -3,145 +3,37 @@
         "nome": "Bryan Leite",
         "email": "bryanleite@gmail.com",
         "senha": "123456789",
+        "avaliacoes": []
+    },
+    "Hugoleite@gmail.com": {
+        "nome": "Hugo",
+        "email": "Hugoleite@gmail.com",
+        "senha": "123456",
         "avaliacoes": [
             {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "762509",
-                "comentario": "Nostalgico!!!",
-                "nota": 7
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "1241982",
-                "comentario": "N\u00c3\u00a3o gosteei da dublagem",
-                "nota": 3
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "939243",
-                "comentario": "Desenho de autista",
+                "usuario": "Hugoleite@gmail.com",
+                "filme_id": 762509,
+                "comentario": "Oi",
                 "nota": 2
             },
             {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "927342",
-                "comentario": "Nunca nem vi",
-                "nota": 1
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "950396",
-                "comentario": "A gostosinha l\u00c3\u00a1",
-                "nota": 7
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "822119",
-                "comentario": "O cara \u00c3\u00a9 preto",
-                "nota": 1
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "1126166",
-                "comentario": "s",
-                "nota": 5
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "1126166",
-                "comentario": "s",
-                "nota": 3
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "1160956",
-                "comentario": "Panda Viado",
-                "nota": 5
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "539972",
-                "comentario": "O do ca\u00c3\u00a7ador la",
-                "nota": 3
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "539972",
-                "comentario": "O do ca\u00c3\u00a7ador la",
-                "nota": 3
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "549509",
-                "comentario": "gostei ",
-                "nota": 8
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "516729",
-                "comentario": "urso pardo ",
-                "nota": 2
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "516729",
-                "comentario": "urso pardo ",
-                "nota": 2
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "516729",
-                "comentario": "urso pardo ",
-                "nota": 2
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "1249289",
-                "comentario": "ALARUM TESTANDO",
-                "nota": 2
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "927342",
-                "comentario": "testando",
+                "usuario": "Hugoleite@gmail.com",
+                "filme_id": 1241982,
+                "comentario": "Oi ",
                 "nota": 4
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "927342",
-                "comentario": "testando",
-                "nota": 4
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "912649",
-                "comentario": "aranha grande la",
-                "nota": 2
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "993710",
-                "comentario": "back in action",
-                "nota": 5
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "1410082",
-                "comentario": "Testando",
-                "nota": 5
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "1084199",
-                "comentario": "teste",
-                "nota": 5
-            },
-            {
-                "usuario": "bryanleite@gmail.com",
-                "filme_id": "710295",
-                "comentario": "Testando Man",
-                "nota": 5
             }
         ]
+    },
+    "sa": {
+        "nome": "asa",
+        "email": "sa",
+        "senha": "123456",
+        "avaliacoes": []
+    },
+    "carlos@gmail.com": {
+        "nome": "Carlos",
+        "email": "carlos@gmail.com",
+        "senha": "123456",
+        "avaliacoes": []
     }
 }

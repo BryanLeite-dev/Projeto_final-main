@@ -7,27 +7,23 @@ class WebSocketController:
         self.clients = []
 
     def add_client(self, client):
+        """Adiciona um novo cliente WebSocket."""
         self.clients.append(client)
 
     def remove_client(self, client):
-        self.clients.remove(client)
-
-    def add_connection(self, ws):
-        """Adiciona uma nova conexão WebSocket."""
-        self.connections.append(ws)
-
-    def remove_connection(self, ws):
-        """Remove uma conexão WebSocket."""
-        if ws in self.connections:
-            self.connections.remove(ws)
+        """Remove um cliente WebSocket."""
+        if client in self.clients:
+            self.clients.remove(client)
 
     def broadcast(self, message):
-        """Envia uma mensagem para todas as conexões WebSocket ativas."""
-        for ws in self.connections:
+        """Envia uma mensagem para todos os clientes conectados."""
+        for client in self.clients:
             try:
-                ws.send(json.dumps(message))
+                client.send(json.dumps(message))
             except Exception as e:
                 print(f"Erro ao enviar mensagem via WebSocket: {e}")
-                self.remove_connection(ws)
+                self.remove_client(client)
 
+
+# Instância global do WebSocketController
 websocket_controller = WebSocketController()

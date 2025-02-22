@@ -8,10 +8,17 @@ class UserController:
         self.load_users()
 
     def load_users(self):
-        if os.path.exists(self.users_file):
-            with open(self.users_file, 'r') as file:
-                self.users = json.load(file)
-        else:
+        try:
+            if os.path.exists(self.users_file):
+                with open(self.users_file, 'r') as file:
+                    data = file.read()
+                    print(f"Dados lidos do arquivo users.json: {data}")  # Log para depuração
+                    self.users = json.loads(data) if data else {}
+            else:
+                print("Arquivo users.json não encontrado. Inicializando dicionário vazio.")
+                self.users = {}
+        except Exception as e:
+            print(f"Erro ao carregar usuários: {e}")
             self.users = {}
 
     def save_users(self):
@@ -23,6 +30,7 @@ class UserController:
             return False
         self.users[email] = {
             "nome": nome,
+            "email": email,
             "senha": senha,
             "avaliacoes": []
         }
@@ -42,42 +50,54 @@ class UserController:
     def is_authenticated(self):
         return self.logged_in_user is not None
 
+    def get_reviews_by_movie(self, filme_id):
+        try:
+            if not isinstance(filme_id, int):
+                raise ValueError("O ID do filme deve ser um número inteiro.")
+
+            print(f"Reviews disponíveis: {self.reviews}")  # Log para depuração
+            reviews = [review for review in self.reviews if review['filme_id'] == filme_id]
+
+            if not reviews:
+                print(f"Nenhuma avaliação encontrada para o filme com ID {filme_id}.")
+                return []
+
+            return reviews
+        except Exception as e:
+            print(f"Erro ao buscar avaliações do filme com ID {filme_id}: {e}")
+            return []
+
+    def get_user_reviews(self, email):
+        """Retorna as avaliações do usuário com o nome do filme."""
+        user_data = self.users.get(email, {})
+        reviews = user_data.get("avaliacoes", [])
+
+        # Busca o nome do filme para cada avaliação
+        enriched_reviews = []
+        for review in reviews:
+            movie_id = review.get("filme_id")
+            if movie_id:
+                try:
+                    movie_details = self.movie_controller.get_movie_details(int(movie_id))
+                    review["movie_title"] = movie_details.get("title", "Título Desconhecido")
+                except Exception as e:
+                    print(f"Erro ao buscar detalhes do filme com ID {movie_id}: {e}")
+                    review["movie_title"] = "Título Desconhecido"
+            else:
+                review["movie_title"] = "Título Desconhecido"
+
+            enriched_reviews.append(review)
+
+        return enriched_reviews
+    
     def add_review_to_user(self, email, review):
         """Adiciona uma avaliação ao perfil do usuário."""
-        try:
-
-            if email not in self.users:
-                raise ValueError(f"Usuário com email '{email}' não encontrado.")            
-
-            if "avaliacoes" not in self.users[email]:
-                    self.users[email]["avaliacoes"] = []  # Garante que a lista de avaliações exista
-
+        if email in self.users:
             self.users[email]["avaliacoes"].append(review)
-
             self.save_users()
 
             # Atualiza o usuário logado
             if self.logged_in_user and self.logged_in_user.get("email") == email:
                 self.logged_in_user["avaliacoes"] = self.users[email]["avaliacoes"]
-
-        except ValueError as ve:
-            print(f"Erro de validação: {ve}")
-            # Aqui você pode optar por lançar novamente o erro ou retornar False para indicar falha
-            return False
-
-        except IOError as ioe:
-            print(f"Erro ao salvar os dados do usuário: {ioe}")
-            # Tratar erro de I/O (ex.: falha ao escrever no arquivo JSON)
-            return False
-
-        except Exception as e:
-            print(f"Erro inesperado ao adicionar avaliação ao usuário: {e}")
-            # Captura qualquer outro erro inesperado
-            return False
-
-        return True
-
-    def get_user_reviews(self, email):
-        return self.users.get(email, {}).get("avaliacoes", [])
     
 user_controller = UserController()
